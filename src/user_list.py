@@ -12,8 +12,8 @@ def extractDistinctWallet():
     for file in files:
         with open(file) as ff:
             for wallet in ff:
+                wallet = wallet.replace('\n', '')
                 if wallet not in user_wallets:
-                    wallet = wallet.replace('\n', '')
                     user_wallets.append(wallet)
     return user_wallets
 
@@ -26,12 +26,14 @@ f = open(filename, "a")
 lines = []
 index = 1
 for wallet in wallets:
-    line = '%s;%s;%s;%s;%s\n' % (
+    line = '%s;%s;%s;%s;%s;%s;%s\n' % (
         index,
         wallet,
         1,
         date.strftime('%Y-%m-%d %H:%M:%S'),
-        date.strftime('%Y-%m-%d %H:%M:%S')
+        date.strftime('%Y-%m-%d %H:%M:%S'),
+        0,
+        0
     )
     index += 1
     lines.append(line)
